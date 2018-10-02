@@ -35,9 +35,16 @@ export class IncompleteCircle {
         const firstAngle = Circle.getRadians(this.start);
         const lastAngle = Circle.getRadians(this.end);
         if(quantity === 1){
-            if(start === 1){
+            if(start === 1 || start === 3){
+                const xWing = radius * Math.abs(Math.cos(firstAngle));
+                const yWing = radius * Math.abs(Math.sin(lastAngle));
+                return [xWing, yWing];
             }
-            if(
+            if(start === 2 || start === 4){
+                const xWing = radius * Math.abs(Math.cos(lastAngle));
+                const yWing = radius * Math.abs(Math.sin(firstAngle));
+                return [xWing, yWing];
+            }
         }
         if(quantity === 2){
             
