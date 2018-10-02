@@ -32,30 +32,35 @@ export class IncompleteCircle {
         const quantity = quadrants.length;
         const start = quadrants[0];
         const radius = this.radius;
+        const firstAngle = Circle.getRadians(this.start);
+        const lastAngle = Circle.getRadians(this.end);
         if(quantity === 1){
-            
+            if(start === 1){
+            }
+            if(
         }
         if(quantity === 2){
+            
         }
         if(quantity === 3){
+            if(start === 1 || start === 3){
+                const xWing = radius * ( 1 + Math.abs(Math.cos(firstAngle)) );
+                const yWing = radius * ( 1 + Math.abs(Math.sin(lastAngle)) );
+                return [xWing, yWing];
+            }
+            if(start === 2 || start === 4){
+                const xWing = radius * ( 1 + Math.abs(Math.cos(lastAngle)) );
+                const yWing = radius * ( 1 + Math.abs(Math.sin(firstAngle)) );
+                return [xWing, yWing];
+            }
         }
         if(quantity === 4){
-            const firstAngle = Circle.getRadians(this.start);
-            const lastAngle = Circle.getRadians(this.end);
-            if(start === 1){
-                const wing = Math.max(Math.cos(firstAngle), Math.cos(lastAngle));
+            if(start === 1 || start === 3){
+                const wing = Math.max(Math.abs(Math.cos(firstAngle)), Math.abs(Math.cos(lastAngle)));
                 return [radius * ( 1 + wing ), 2 * radius];
             }
-            if(start === 2){
-                const wing = Math.max(Math.sin(firstAngle), Math.sin(lastAngle));
-                return [2 * radius, radius * ( 1 + wing )];
-            }
-            if(start === 3){
-                const wing = Math.max(Math.abs(Math.cos(firstAngle)), Math.cos(Math.sin(lastAngle)));
-                return [radius * ( 1 + wing ), 2 * radius];
-            }
-            if(start === 4){
-                const wing = Math.max(Math.abs(Math.sin(firstAngle)), Math.sin(Math.sin(lastAngle)));
+            if(start === 2 || start === 4){
+                const wing = Math.max(Math.abs(Math.sin(firstAngle)), Math.abs(Math.sin(lastAngle)));
                 return [2 * radius, radius * ( 1 + wing )];
             }
         }
