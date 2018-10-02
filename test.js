@@ -1,4 +1,4 @@
-import { IncompleteCircle } from 'incomplete.js';
+import { IncompleteCircle } from './src/incomplete.js';
 
 let circle = new IncompleteCircle(100, 140, 30);
 
