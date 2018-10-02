@@ -47,7 +47,14 @@ export class IncompleteCircle {
             }
         }
         if(quantity === 2){
-            
+            if(start === 1 || start === 3){
+                const wing = Math.abs(Math.cos(firstAngle)) + Math.abs(Math.cos(lastAngle));
+                return [wing, 2 * radius];
+            }
+            if(start === 2 || start === 4){
+                const wing = Math.abs(Math.sin(firstAngle)) + Math.abs(Math.sin(lastAngle));
+                return [2* radius, wing];
+            }
         }
         if(quantity === 3){
             if(start === 1 || start === 3){
